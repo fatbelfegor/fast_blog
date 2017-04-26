@@ -1,36 +1,91 @@
-/* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      .navbar-brand {
+$primary-color: #666666;
+$accent-color: #1D1D1D;
+$primary-color-text: #C1C1C1;
+$primary-color-brand: #E1E1E1;
+$primary-color-light: #F1F1F1;
+
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0px;
+    background-color: $primary-color;
+    .navbar-brand {
         font-weight: bolder;
+        color: $accent-color;
         .light {
-          font-weight: 300;
+            font-weight: 300;
+            color: $primary-color-brand;
         }
+    }
+    .navbar-toggler {
+        outline: none;
+    }
+    .nav-link {
+      color: $primary-color-text !important;
+      &.active {
+        color: $primary-color-light !important;
       }
     }
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 750px}
+    .nav-item.author-nav {
+      img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 1px solid $primary-color-light;
+      }
+    }
+}
+
+.collapse-bg {
+    padding: 0 !important;
+    .card {
+        margin-bottom: 0;
+        border-radius: 0;
+        border: none;
+    }
+}
+
+
+.collapse-bg .card .list-group-item {
+    padding: 0;
+    border-radius: 0 !important;
+    border-color: black;
+    a {
+        background-color: #1a1a1a;
+        color: #bdc3c7;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        &:active {
+            color: white;
+            border-bottom: none;
+        }
+    }
+}
+
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+ .row.content {height: 750px}
+  
+/* Set gray background color and 100% height */
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
     
-    /* Set gray background color and 100% height */
+/* Set black background color, white text and some padding */
+footer {
+    background-color: $primary-color;
+    color: $primary-color-light;
+    padding: 15px;
+}
+    
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
     .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
         height: auto;
         padding: 15px;
       }
       .row.content {height: auto;} 
-    }
+}
