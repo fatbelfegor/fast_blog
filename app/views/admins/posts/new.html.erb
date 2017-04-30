@@ -2,4 +2,4 @@
 <% provide(:new_active, 'active') %>
 
 <h2>Create New Post</h2>
-<%= render "posts/form" %>
+<%= render 'form', post: @post, url: admins_posts_url %>

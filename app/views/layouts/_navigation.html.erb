@@ -20,8 +20,8 @@
         <li><%= link_to 'Contact', contact_path, class: "nav-link #{yield(:contact_active)}" %></li>
         <% if admin_signed_in? %>
         <!--This block is only visible to signed in admins -->
-          <li><%= link_to 'New Post', new_post_path, class: "nav-link #{yield(:new_active)}" %></li>
-          <li><%= link_to 'My Account', edit_admin_registration_path, class: "nav-link #{yield(:account_active)}" %></li>
+          <li><%= link_to 'New Post', new_admins_post_path, class: "nav-link #{yield(:new_active)}" %></li>
+          <li><%= link_to 'My Posts', admins_posts_path, class: "nav-link #{yield(:account_active)}" %></li>
           <li>
               <%= link_to destroy_admin_session_path, class: "nav-link", method: "delete" do %>
                 <i class="glyphicon glyphicon-log-out"></i> Logout
@@ -31,7 +31,7 @@
         <% else %>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <%= link_to new_admin_session_path do %>
+              <%= link_to new_admin_session_path, class: "nav-link" do %>
                 <i class="glyphicon glyphicon-log-in"></i> Login
               <% end %>
             </li>
