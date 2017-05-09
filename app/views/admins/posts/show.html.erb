@@ -3,7 +3,14 @@
 
 	<h2 class="text-center"><%= @post.title %></h2>
 	<h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
-	<div><%= raw @post.body  %></div>
+	<div><%= raw @post.body.html_safe  %></div>
+	<div class="text-left">
+			<% if @post.admin.avatar.url.present? %>
+				<%= image_tag(@post.admin.avatar.url(:thumb))  %>
+			<% end %>
+			<br>
+      <%= "Author: #{@post.admin.username}" %>
+    </div>
 	<br/>
 	<% if admin_signed_in? %>
     <%= link_to "Back", posts_path, class: "btn btn-success" %>

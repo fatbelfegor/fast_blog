@@ -2,18 +2,18 @@ module Admins
   class PostsController < ApplicationController
 
     before_action :authenticate_admin!, except: [:index, :show]
-    before_action :find_post, only: [:edit, :update, :show, :destroy]
+    before_action :find_post, only: [:edit, :update, :show, :destroy, :publish, :unpublish]
 
     def index
-      @posts = Post.most_recent
+      @posts = current_admin.posts.most_recent
     end
 
     def new
-      @post = Post.new
+      @post = current_admin.posts.new
     end
 
     def create
-      @post = Post.new(post_params)
+      @post = current_admin.posts.new(post_params)
       if @post.save
         flash[:notice] = "Successfully created post!"
         redirect_to admins_post_path(@post)
@@ -23,7 +23,17 @@ module Admins
       end
     end
 
-    def edit    
+    def edit
+    end
+
+    def publish
+      @post.publish
+      redirect_to admins_posts_path
+    end
+
+    def unpublish
+      @post.unpublish
+      redirect_to admins_posts_path
     end
 
     def update
@@ -55,7 +65,7 @@ module Admins
     end
 
     def find_post
-      @post = Post.friendly.find(params[:id])
+      @post = current_admin.posts.friendly.find(params[:id])
     end
   end
 end

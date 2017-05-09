@@ -4,9 +4,7 @@ module Blog
 		def about
 		end
 
-		def contact		
+		def contact
 		end
 
-
-	end
 end

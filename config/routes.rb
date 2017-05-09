@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :admins
   mount Ckeditor::Engine => '/ckeditor'
-  
+
   root to: "blog/posts#index"
 
   namespace :admins do
-    resources :posts
+    resources :posts do
+      put 'publish' => 'posts#publish', on: :member
+      put 'unpublish' => 'posts#unpublish', on: :member
+    end
   end
 
   scope module: 'blog' do

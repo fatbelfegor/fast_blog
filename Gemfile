@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'friendly_id'
 #gem 'babosa'
 gem 'rails-i18n'
+gem 'annotate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

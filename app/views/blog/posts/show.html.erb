@@ -3,11 +3,12 @@
 
 	<h2 class="text-center"><%= @post.title %></h2>
 	<h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
-	<div><%= raw @post.body  %></div>
+	<div><%= @post.body.html_safe  %></div>
 	<br/>
-	<% if admin_signed_in? %>
-    <%= link_to "Back", posts_path, class: "btn btn-success" %>
-    <%= link_to "Edit", admins_post_path, class: "btn btn-default" %>
-    <%= link_to "Delete", admins_post_path, class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
-  <% end %>
+	<div class="text-left">
+			<% if @post.admin.avatar.url.present? %>
+				<%= image_tag(current_admin.avatar.url)  %>
+			<% end %>
+      <%= "Author: #{@post.admin.username}" %>
+    </div>
   <hr/>

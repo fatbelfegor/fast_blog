@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430212116) do
+ActiveRecord::Schema.define(version: 20170504192203) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20170430212116) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar"
+    t.string   "username"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_admins_on_username", unique: true
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -57,10 +59,12 @@ ActiveRecord::Schema.define(version: 20170430212116) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "slug"
     t.integer  "admin_id"
+    t.boolean  "published",    default: false
+    t.datetime "published_at"
     t.index ["admin_id"], name: "index_posts_on_admin_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end

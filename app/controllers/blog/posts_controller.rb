@@ -4,8 +4,8 @@ module Blog
     before_action :authenticate_admin!, except: [:index, :show]
 
     def index
-      @posts = Post.most_recent
-    end   
+      @posts = Post.most_recent.published
+    end
 
     def show
       @post = Post.friendly.find(params[:id])
