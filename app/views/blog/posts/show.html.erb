@@ -5,6 +5,7 @@
 	<h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
 	<div><%= @post.body.html_safe  %></div>
 	<br/>
+	 <p class='tags'><%= raw @post.tags.map { |t| link_to t.name, posts_path(tag: t.name) }.join(', ') %></p>
 	<div class="text-left">
 			<% if @post.admin.avatar.url.present? %>
 				<%= image_tag(current_admin.avatar.url)  %>

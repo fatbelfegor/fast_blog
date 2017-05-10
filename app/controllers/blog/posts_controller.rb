@@ -4,11 +4,17 @@ module Blog
     before_action :authenticate_admin!, except: [:index, :show]
 
     def index
-      @posts = Post.most_recent.published
+      @posts = storage.list_for(params[:page], params[:tag])
     end
 
     def show
-      @post = Post.friendly.find(params[:id])
+      @post = storage.friendly.find(params[:id])
+    end
+
+     private
+
+    def storage
+      Post.published
     end
 
   end
