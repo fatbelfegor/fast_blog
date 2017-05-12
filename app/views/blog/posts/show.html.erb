@@ -8,7 +8,7 @@
 	 <p class='tags'><%= raw @post.tags.map { |t| link_to t.name, posts_path(tag: t.name) }.join(', ') %></p>
 	<div class="text-left">
 			<% if @post.admin.avatar.url.present? %>
-				<%= image_tag(current_admin.avatar.url)  %>
+				<%= image_tag(current_admin.avatar.url(:thumb))  %>
 			<% end %>
       <%= "Author: #{@post.admin.username}" %>
     </div>

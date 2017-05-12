@@ -27,4 +27,11 @@ class Admin < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :posts
+
+  validates_presence_of :username, on: :update
+
+  def change_password(attrs)
+    update(password: attrs[:new_password], password_confirmation: attrs[:new_password_confirmation])
+	end
+
 end

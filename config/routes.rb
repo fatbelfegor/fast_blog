@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: "blog/posts#index"
 
   namespace :admins do
+    get '/account' => 'accounts#edit', as: :account
+    put '/info' => 'accounts#update_info', as: :info
     resources :posts do
       put 'publish' => 'posts#publish', on: :member
       put 'unpublish' => 'posts#unpublish', on: :member

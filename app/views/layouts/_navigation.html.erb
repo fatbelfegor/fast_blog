@@ -22,6 +22,7 @@
         <!--This block is only visible to signed in admins -->
           <li><%= link_to 'New Post', new_admins_post_path, class: "nav-link #{yield(:new_active)}" %></li>
           <li><%= link_to 'My Posts', admins_posts_path, class: "nav-link #{yield(:account_active)}" %></li>
+          <li><%= link_to 'Account', admins_account_path, class: "nav-link" %></li>
           <li>
               <%= link_to destroy_admin_session_path, class: "nav-link", method: "delete" do %>
                 <i class="glyphicon glyphicon-log-out"></i> Logout
